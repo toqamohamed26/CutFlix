@@ -1,0 +1,30 @@
+﻿@model CUTFLI.ViewModels.ContactUsViewModel
+
+<div class="col-lg-7 col-md-12 p-5 contact">
+    <h2 class="text-center cont">contact us</h2>
+    <form asp-controller="CutFli" asp-action="ContactUs" class="pt-4">
+        <div class="form-group">
+            <input asp-for="FullName" type="text" class="form-control form-control-lg" id="name"
+                   aria-describedby="emailhelp" placeholder="your name">
+        </div>
+        <div class="row pt-3">
+            <div class="col-md-6 mt-sm-3">
+                <input asp-for="PhoneNumber" type="text" class="form-control form-control-lg" placeholder="your phonenumber">
+            </div>
+            <br>
+            <div class="col-md-6 pt-2">
+                <input asp-for="Email" type="text" class="form-control form-control-lg mt-sm-2"
+                       placeholder="your e-mail">
+            </div>
+        </div>
+        <div class="form-group pt-3">
+            <textarea asp-for="Message" class="form-control" id="exampleformcontroltextarea1" placeholder="your message"
+                      rows="6"></textarea>
+        </div>
+        <div class=" text-center pt-3">
+            <button style="border: #fff 2px solid;" type="submit" class="btn sendbtn px-5">
+                <h4 class="text-capitalize  send">send</h4>
+            </button>
+        </div>
+    </form>
+</div>

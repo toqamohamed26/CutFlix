@@ -1,0 +1,29 @@
+﻿@model CUTFLI.ViewModels.PeopleViewModel
+@{
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3"><span class="text-muted fw-light">Customer /</span> Details</h4>
+    <div class="row py-5 d-flex justify-content-around align-items-center bg-white">
+        <div class="col-6 col-md-3  d-flex justify-content-center">
+            <div>
+                <h6>Full Name :</h6>
+                <p>@Model.FullName</p>
+                <h6>Email :</h6>
+                <p>@Model.Email</p>
+                <h6>Phone Number :</h6>
+                <p>@Model.PhoneNumber</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+

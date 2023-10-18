@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CUTFLI.ViewModels.UserServiceViewModel>
+@{
+    Layout = "~/Views/Shared/_UiLayout.cshtml";
+}
+<div class="bg-image position-relative">
+    <img src="~/assets/img/Ui/Frame0.png" class="w-100 img-fluid" />
+    <div class="overlay2"></div>
+    <div class="mask2 text-light d-flex justify-content-center align-items-center">
+        <h1 class="fw-bolder">Services</h1>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <img src="~/assets/img/Ui/2 2.png" alt="" class="imglogo">
+</div>
+
+<div class="container" id="service">
+    <div class="text-center">
+        <p class=" text text-center"> @Context.Session.GetString("barber") Services </p>
+    </div>
+    <div class="row py-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-6 col-md-3 pt-3 px-1 px-md-2">
+                <div class="card h-100">
+                    <img src="@("data:image/*;base64,"+Convert.ToBase64String(item.Service.Image))" class="card-img-top" alt="Image 2" style="height: 220px;">
+                    <div class="card-body bg-black border border-1 border-top-0 d-flex flex-column">
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <h5 class="card-title cut">@item.Service.Name</h5>
+                            </div>
+                            <div class="price color">@item.Service.Price$</div>
+                        </div>
+                        <p class="card-text flex-grow-1">
+                            @item.Service.Description
+                        </p>
+                        <div class="text-center">
+                            <a asp-controller="CutFli" asp-action="Appointments" asp-route-service="@item.Service.Id">
+                                <button class="px-lg-5  btn bookthis">
+                                    Book
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

@@ -1,0 +1,125 @@
+﻿@model CUTFLI.ViewModels.UserViewModel
+
+@{
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }else{
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Account</h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills flex-column flex-md-row mb-3">
+                <li class="nav-item">
+                    <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Password"><i class='bx bx-lock-alt'></i> Password</a>
+                </li>
+            </ul>
+            <div class="card mb-4">
+                <h5 class="card-header">Profile Details</h5>
+                <form method="POST" action="Profile" enctype="multipart/form-data">
+                    <input class="form-control" asp-for="Id" type="hidden" />
+                    <div class="card-body">
+                        <div id="image-container" class="d-flex align-items-start align-items-sm-center gap-4">
+                            <img src="data:image\/*;base64,@(Convert.ToBase64String(Model.Image))"
+                                 alt="user-image"
+                                 class="d-block rounded"
+                                 height="100"
+                                 width="100"
+                                 id="uploadedImage" />
+                            <div class="button-wrapper">
+                                <button type="button" id="OpenImgUpload" class="btn btn-primary me-2 mb-4">
+                                    <span class="d-none d-sm-block">Upload new photo</span>
+                                    <i class="bx bx-upload d-block d-sm-none"></i>
+                                </button>
+                                <input type="file"
+                                       id="imageFile"
+                                       asp-for="Image"
+                                       class="account-file-input"
+                                       hidden
+                                       accept="image/png, image/jpeg" />
+                                <p class="text-muted mb-0">Allowed JPG or PNG. Max size of 3MB</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-0" />
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label asp-for="FullName" class="form-label">Full Name</label>
+                                <small asp-validation-for="FullName" class="text-danger ms-3"></small>
+                                <input class="form-control"
+                                       asp-for="FullName"
+                                       maxlength="60"
+                                       type="text"
+                                       placeholder="John Doe" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" asp-for="PhoneNumber">Phone number</label>
+                                <small asp-validation-for="PhoneNumber" class="text-danger ms-3"></small>
+                                <div class="input-group input-group-merge">
+                                    <span class="input-group-text">US (+1)</span>
+                                    <input type="text"
+                                           asp-for="PhoneNumber"
+                                           class="form-control"
+                                           placeholder="202 555 0111" />
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label asp-for="Email" class="form-label">E-mail</label>
+                                <input class="form-control"
+                                       asp-for="Email"
+                                       type="email"
+                                       placeholder="john.doe@example.com"/>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label asp-for="Address" class="form-label">Address</label>
+                                <small asp-validation-for="Address" class="text-danger ms-3"></small>
+                                <input type="text"
+                                       asp-for="Address"
+                                       class="form-control"
+                                       placeholder="Address" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label asp-for="Permission" class="form-label"></label>
+                                <small asp-validation-for="Permission" class="text-danger ms-3"></small>
+                                <input type="text"
+                                       asp-for="Permission"
+                                       class="form-control"
+                                       disabled
+                                       placeholder="Address" />
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#OpenImgUpload').click(function () { $('#imageFile').trigger('click'); });
+
+            $('#imageFile').on('change', function () {
+                var selectedFile = $(this).val().split('\\').pop();
+                var imageContainet = $('#image-container');
+                var image = window.URL.createObjectURL(this.files[0]);
+                imageContainet.find('img').attr('src', image);
+            });
+
+        });
+    </script>
+}

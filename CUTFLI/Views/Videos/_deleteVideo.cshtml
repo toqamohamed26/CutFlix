@@ -1,0 +1,23 @@
+﻿@model CUTFLI.ViewModels.VideoViewModel
+
+<div class="modal fade" id="deleteDialog-@Model.Id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel"><i class="bx bx-trash fs-1 text-danger me-1"></i> Confirm Delete</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="Delete">
+                <div class="modal-body">
+                    <h5>Are you sure to delete ?</h5>
+
+                    <input type="hidden" id="id" name="id" value="@Model.Id" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

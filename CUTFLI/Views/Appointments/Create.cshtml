@@ -1,0 +1,81 @@
+﻿@using CUTFLI.Enums
+@model CUTFLI.ViewModels.AppointmentViewModel
+
+@{
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Appointment/</span> Add Appointment</h4>
+    <div class="row">
+
+        <div class="col-xxl">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">Add Appointment</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div class="row mb-3">
+                            <label asp-for="Date" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                    <input type="date"
+                                           asp-for="Date"
+                                           class="form-control" />
+                                </div>
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" asp-for="StartTime">Start Time</label>
+                            <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                    <input type="time"
+                                           asp-for="StartTime"
+                                           class="form-control"/>
+                                </div>
+                                <span asp-validation-for="StartTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" asp-for="EndTime">End Time</label>
+                            <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                    <input type="time"
+                                           asp-for="EndTime"
+                                           class="form-control"/>
+                                </div>
+                                <span asp-validation-for="EndTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" asp-for="UserId">Employee</label>
+                            <div class="col-sm-10">
+                                <div class="input-group input-group-merge">
+                                    <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                                </div>
+                                <span asp-validation-for="UserId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CUTFLI.ViewModels.VideoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Video </span></h4>
+
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.VideoName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.VideoName
+                            </td>
+                            <td>
+                                @item.CreatedDate?.ToString("dd-MM-yyyy")
+                            </td>
+                            <td>
+                                <a data-bs-toggle="modal" data-bs-target="@("#deleteDialog-"+item.Id)" data-url="@Url.Action($"Delete/{item.Id}")"><i class="bx bx-trash me-1 text-danger"></i></a>
+                            </td>
+                        </tr>
+                        @await Html.PartialAsync("_deleteVideo",item)
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

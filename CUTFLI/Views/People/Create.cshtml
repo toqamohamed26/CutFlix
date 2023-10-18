@@ -1,0 +1,70 @@
+﻿@model CUTFLI.ViewModels.PeopleViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Customer /</span> Add Customer</h4>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-6 col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Add Customer</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" asp-action="Create" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="FullName">Full Name</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text">
+                                    <i class="bx bx-user"></i>
+                                </span>
+                                <input type="text"
+                                       asp-for="FullName"
+                                       maxlength="60"
+                                       class="form-control"
+                                       placeholder="John Doe" />
+                            </div>
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="PhoneNumber">Phone no</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-phone2" class="input-group-text">
+                                    <i class="bx bx-phone"></i>
+                                </span>
+                                <input type="text"
+                                       asp-for="PhoneNumber"
+                                       maxlength="15"
+                                       class="form-control phone-mask"
+                                       placeholder="658 799 8941" />
+                            </div>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" asp-for="Email">Email</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                                <input type="text"
+                                       asp-for="Email"
+                                       maxlength="40"
+                                       class="form-control"
+                                       placeholder="john.doe"
+                                       aria-label="john.doe" />
+                                <span id="basic-icon-default-email2" class="input-group-text">example.com</span>
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

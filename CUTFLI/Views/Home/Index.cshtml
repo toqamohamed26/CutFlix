@@ -1,0 +1,76 @@
+﻿<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="~/assets/img/dashboard/customer.png" width="60" alt="customer" class="rounded" />
+                        </div>
+                        <div>
+                            <span class="d-block mb-1">Customers</span>
+                            <h4 class="card-title text-nowrap mb-2">@ViewBag.Customers</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-sm btn-primary w-100 text-white" asp-controller="people" asp-action="Index">Visit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="~/assets/img/dashboard/appointment.png" width="60" alt="appointment" class="rounded" />
+                        </div>
+                        <div>
+                            <span class="fw-semibold d-block mb-1">Appointments</span>
+                            <h4 class="card-title mb-2">@ViewBag.Appointments</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-sm btn-primary w-100 text-white" asp-controller="Appointments" asp-action="Index">Visit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="~/assets/img/dashboard/employee.png" width="60" alt="Employee" class="rounded" />
+                        </div>
+                        <div>
+                            <span class="fw-semibold d-block mb-1">Employee</span>
+                            <h4 class="card-title mb-2">@ViewBag.Users</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-sm btn-primary w-100 text-white" asp-controller="Users" asp-action="Index">Visit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="flex-shrink-0">
+                            <img src="~/assets/img/dashboard/profit.png" width="60" alt="Profit" class="rounded" />
+                        </div>
+                        <div>
+                            <span class="fw-semibold d-block mb-1">Profit</span>
+                            <h4 class="card-title mb-2">$@ViewBag.Profit</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-sm btn-primary w-100 text-white">Visit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CUTFLI.ViewModels.Barbers>
+@{
+    Layout = "~/Views/Shared/_UiLayout.cshtml";
+}
+<div class="play">
+    <video id="myVideo" class="img-fluid w-100" autoplay>
+        <source id="mp4_src" src="@Url.Action("GetVideo","CutFli", new { videoName = ViewBag.Video })" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="d-flex justify-content-center">
+    <img src="~/assets/img/Ui/2 2.png" alt="" class="imglogo">
+</div>
+<div class="d-flex justify-content-center">
+    <p class=" text text-center"> Barbers</p>
+
+</div>
+@*<div class="d-flex justify-content-center">
+    <p class="align-content-center w-50 text-center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Ut elit tellus, luctus nec ullamcorper
+        mattis, pulvinar dapibus leo.
+    </p>
+</div>*@
+
+
+
+
+<div class="p-md-5 m-md-4">
+    <div class="overlay position-relative">
+        <div class="d-flex flex-wrap p-2">
+            @foreach (var item in Model)
+            {
+                <div class="col-6 p-md-3 ">
+                    <div class="w-100 position-relative">
+                        <a asp-controller="CutFli" asp-action="Services" asp-route-barber="@item.Id">
+                            <img src="@("data:image/*;base64,"+Convert.ToBase64String(item.Image))" alt="" class="w-100 p-3 homeimg" style="height: 750px;">
+                    </a>
+                    <div class="position-absolute text-overlay translate-middle-x text-center bottom-0 start-50 translate-middle-x">
+                            <h3 class="text-center text-uppercase py-4">@item.FullName</h3>
+                        </div>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

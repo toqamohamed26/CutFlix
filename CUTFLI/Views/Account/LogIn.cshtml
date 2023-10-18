@@ -1,0 +1,54 @@
+﻿@model CUTFLI.ViewModels.AccountViewModel
+@{
+    Layout = "~/Views/Shared/_Account.cshtml";
+}
+
+<div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication-inner">
+        <div class="card">
+            <div class="card-body">
+                <div class="app-brand justify-content-center">
+                    <a href="index.html" class="app-brand-link gap-1">
+                       @* <span class="app-brand-logo demo">
+                            <img src="~/assets/img/icons/brands/logo.png" width="40" />
+                        </span>*@
+                        <span class="app-brand-text text-body fw-bolder">CUTFLI</span>
+                    </a>
+                </div>
+                <h4 class="mb-2">Welcome to CUTFLI</h4>
+                <p class="mb-4">Please sign-in to your account</p>
+
+                <form class="mb-3" method="POST" asp-action="Login">
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input type="email"
+                               asp-for="Email"
+                               class="form-control"
+                               placeholder="Enter your email"
+                               autofocus />
+                    </div>
+                    <div class="mb-3 form-password-toggle">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label" asp-for="Password">Password</label>
+                            <a asp-controller="Account" asp-action="ForgetPassword">
+                                <small>Forgot Password?</small>
+                            </a>
+                        </div>
+                        <div class="input-group input-group-merge">
+                            <input type="password"
+                                   asp-for="Password"
+                                   class="form-control"
+                                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                   aria-describedby="password" />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
