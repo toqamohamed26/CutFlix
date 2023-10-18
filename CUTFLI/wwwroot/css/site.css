@@ -1,0 +1,509 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    word-wrap: break-word !important;
+    text-overflow: ellipsis !important;
+}
+
+.navbar, .text, .nav-link, .txt {
+    color: #FFF;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0em;
+}
+.modal-content{
+    background-color: black !important ;
+}
+.active {
+    border-bottom: 2px solid #E50914;
+}
+
+.textbig {
+    font-size: 43px;
+    font-weight: 600;
+}
+
+
+.text-overlay {
+    left: 50%;
+    bottom: 10%;
+    text-transform: capitalize;
+}
+
+.circle {
+    width: 4em;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    background: #E50914
+}
+
+.overlay {
+    position: absolute;
+    background-color: black !important;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+}
+.contact, .Hours {
+    background-color: #E50914;
+   
+}
+
+@media screen and (min-width: 1215px) and (max-width: 1400px) {
+    .call {
+        width: 500px !important;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .img {
+        width: 23px;
+    }
+    footer{
+        background-color: #000;
+    }
+    .card-img-top{
+        height:180px !important;
+    }
+    .card {
+        border : solid 1px #fff;
+    }
+    .price{
+        font-size :1em;
+    }
+    .card-text {
+        font-size: .8em !important;
+    }
+    .bookthis{
+        width : 100% !important;
+        border-radius :12% !important;
+    }
+    .active {
+        width: 70px !important;
+    }
+
+    .imglogo {
+        width: 50%;
+    }
+
+    .navbar {
+        margin-left: 10%;
+    }
+
+    h2, h1, h3 {
+        font-size: 16px !important;
+    }
+
+    h4 {
+        font-size: 12px !important;
+    }
+    .row.reverse-cols {
+        flex-direction: column-reverse !important;
+    }
+     
+  
+    .square {
+        width: 3em !important;
+        height: 3em !important;
+    }
+
+    .social {
+        padding-bottom: 2px !important;
+        width: 2em !important;
+        height: 2em !important;
+    }
+    .ico {
+        padding-bottom: 2px !important;
+        width: 1.7em !important;
+        height: 1.7em !important;
+    }
+    .circle {
+        width: 2.6em !important;
+        height: 2.6em !important;
+    }
+    .contact{
+        background-color : #000;
+    }
+    .sendbtn{
+        width :100% !important ;
+    }
+    .send{
+        font-size:1.3em !important;
+    }
+    .cont {
+        font-size: 2em !important;
+    }
+    .vb {
+        display: flex !important;
+    }
+    .cut {
+        font-size: 1em !important;
+    }
+    .txt {
+        font-size: 15px !important;
+        width: 200px !important;
+    }
+
+    .phoneicon {
+        width: 2em !important;
+        height: 2em !important;
+    }
+
+    .call {
+        font-size: medium !important;
+        color: #FFF;
+        width: 370px;
+    }
+
+    .navbar-nav {
+        margin: 0 !important;
+    }
+
+    .calldiv {
+        margin-left: 7%;
+    }
+
+    .navbar-toggler {
+        position: absolute;
+        top: 30%;
+        left: 80%;
+    }
+
+    .f {
+        width: 10px !important;
+    }
+
+    .centered {
+        display: none;
+    }
+}
+
+.clock {
+    width: 8em;
+    height: 2em;
+    margin-right: .25em;
+}
+
+.selectedTime {
+    background-color: #E50914 !important;
+}
+
+.calenderDay:hover {
+    background-color: #E50914 !important;
+}
+
+.time {
+    background-color: transparent;
+}
+
+footer {
+    color: #FFF;
+   
+}
+
+
+
+.btn:hover {
+    background-color: #FFF !important;
+    color: #E50914 !important;
+    border: #E50914 solid 2px !important;
+}
+
+.btn {
+    background-color: #E50914 !important;
+    color: #FFF !important;
+    border: #FFF solid 2px !important;
+}
+
+.clock:hover {
+    background-color: #E50914 !important;
+    color: #FFF !important;
+    border: #FFF solid 2px !important;
+}
+
+.header {
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../assets/img/Ui/Rectangle\ 22.png");
+    background-size: cover;
+    width: 100%;
+}
+
+.color {
+    color: #E50914;
+}
+
+.square {
+    width: 3.7em;
+    height: 3.7em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 50px;
+    border-radius: 5%;
+    color: #fff;
+    text-align: center;
+    background: #E50914;
+    margin-top: 4%;
+}
+.ico {
+    width: 1.7em;
+    height: 1.7em;
+}
+.social {
+    width: 2em;
+    height: 2em;
+}
+
+.phoneicon {
+    width: 2.7em;
+    height: 2.7em;
+}
+
+.bg {
+    background-color: #000000;
+    outline-style: solid;
+    outline-color: #000;
+    outline-width: 15px;
+    border: 2px solid #ffff;
+}
+
+
+.centered {
+    position: absolute;
+    top: 49%;
+    left: 45%;
+}
+
+.play {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+@media screen and (min-width: 600px) {
+    #text {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #text {
+        font-size: 30px;
+    }
+}
+
+
+th,
+td {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.selected-day {
+    background-color: #E50914 !important;
+}
+
+.previous {
+    color: #fff;
+}
+
+.next {
+    color: white;
+}
+
+.overlayy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.maskk {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#text {
+    margin-bottom: 20% !important;
+}
+
+.overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mask2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .mask2 h1 {
+        margin: 0;
+    }
+
+
+.pt-2.a::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
+.pt-2.a::-webkit-scrollbar-thumb {
+    background-color: rgba(212, 209, 209, 0.2);
+    border-radius: 5px;
+}
+
+.pt-2.a::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+.card-body {
+    background-color: black;
+}
+
+@media screen and (max-width: 1024px) {
+    .homeimg {
+        height: 200px !important;
+    }
+}
+
+
+
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+    a:hover {
+        color: currentColor;
+    }
+
+
+
+
+.mobile-toggler {
+    font-size: 30px;
+}
+
+/* modal */
+
+.modal-dialog {
+    margin: 0;
+    width: 430px;
+}
+
+@media(max-width: 450px) {
+
+    .modal-dialog {
+        width: 82%;
+    }
+}
+
+.modal-content {
+    border-radius: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: #000;
+}
+
+.modal-header {
+    border: none !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 88%;
+    margin: 0 auto;
+    padding-bottom: 16px;
+}
+
+    .modal-header .btn-close {
+        background: transparent;
+        opacity: 1;
+    }
+
+.modal-body {
+    width: 88%;
+    margin: 0 auto;
+    padding: 75px 0 0 0;
+    flex: unset;
+}
+
+    .modal-body .modal-line {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 7px 0;
+        margin-bottom: 50px;
+        cursor: pointer;
+        transition: all .5s ease;
+        color: #274d8a;
+    }
+
+
+.modal-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal {
+    animation: myAnim .5s ease .5s 1 normal forwards;
+    -webkit-animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 1;
+        transform: translateX(-250px);
+        -webkit-transform: translateX(-250px);
+        -moz-transform: translateX(-250px);
+        -ms-transform: translateX(-250px);
+        -o-transform: translateX(-250px);
+    }
+
+    38% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+
+    90% {
+        animation-timing-function: ease-out;
+        transform: translateX(0);
+    }
+
+    95% {
+        animation-timing-function: ease-in;
+        transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+        -moz-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        -o-transform: translateX(0px);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,66 @@
+﻿@using static CUTFLI.Enums.SystemEnums
+@model IEnumerable<CUTFLI.ViewModels.ServiceViewModel>
+
+@{
+    Layout = "~/Views/Shared/_UiLayout.cshtml";
+}
+<div class="bg-image position-relative">
+    <img src="~/assets/img/Ui/h.png" class="w-100 img-fluid" />
+    <div class="overlay2"></div>
+    <div class="mask2 text-light d-flex justify-content-center align-items-center">
+        <h1 class="fw-bolder">Prices</h1>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <img src="~/assets/img/Ui/2 2.png" alt="" class="imglogo">
+</div>
+
+
+<div class="w-100" id="barbers">
+    <div class="container">
+        <h3 class=" text-center"> Our Prices</h3>
+        <div class="bg-image mt-5" style="height: auto; position: relative;">
+            <img src="~/assets/img/Ui/Rectangle 30874.png" class="w-100 img-fluid" />
+            <div class="pt-2 a" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow-y: auto;">
+                <h2 class="textbig text-center">Men</h2>
+                <div class="d-flex flex-column h-100">
+                    @foreach (var item in Model.Where(x => x.Gender == Gender.Male))
+                    {
+                        <div class="d-flex justify-content-between px-5 py-1">
+                            <div>
+                                <h2>@item.Name</h2>
+                            </div>
+                            <div>
+                                <h2 class=" ">@item.Price$</h2>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bg-image my-5" style="height: auto; position: relative;">
+            <img src="~/assets/img/Ui/Rectangle 30876.png" class="w-100 img-fluid " />
+            <div class="pt-2 a" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow-y: auto;">
+                <h2 class="textbig text-center pt-2">Woman</h2>
+                <div class="d-flex flex-column scrolling h-100">
+
+                    @foreach (var item in Model.Where(x => x.Gender == Gender.Female))
+                    {
+                        <div class="d-flex justify-content-between px-5 py-1">
+                            <div>
+                                <h2>@item.Name</h2>
+                            </div>
+                            <div>
+                                <h2 class=" ">@item.Price$</h2>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="~/assets/img/Ui/logo.png" />
+    <link rel="stylesheet" href="~/css/site.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>CUTFLIX</title>
+</head>
+
+<body style="background-color: black; color: #fff;">
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container reverse">
+            <a class="navbar-brand" href="./index.html">
+                <img src="~/assets/img/Ui/2 2.svg" class=" w-75">
+            </a>
+            <div class="mobile-toggler navbar-toggler d-lg-none">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#navbModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="37" viewBox="0 0 42 37" fill="none">
+                        <rect x="0.5" y="0.5" width="41" height="36" rx="4.5" fill="black" stroke="#E50914" />
+                        <path d="M27.1431 25.8571C27.1431 26.4883 26.6314 27 26.0003 27L11.1431 27C10.512 27 10.0003 26.4883 10.0003 25.8571C10.0003 25.226 10.512 24.7143 11.1431 24.7143L26.0003 24.7143C26.6314 24.7143 27.1431 25.226 27.1431 25.8571ZM11.1431 20.1429L31.7146 20.1429C32.3457 20.1429 32.8574 19.6311 32.8574 19C32.8574 18.3688 32.3457 17.8571 31.7146 17.8571L11.1431 17.8571C10.512 17.8571 10.0003 18.3688 10.0003 19C10.0003 19.6311 10.512 20.1429 11.1431 20.1429ZM11.1431 13.2857L21.4289 13.2857C22.06 13.2857 22.5717 12.774 22.5717 12.1429C22.5717 11.5117 22.06 11 21.4289 11L11.1431 11C10.512 11 10.0003 11.5117 10.0003 12.1429C10.0003 12.774 10.512 13.2857 11.1431 13.2857Z" fill="#E50914" />
+                    </svg>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav " style="margin-left: 16%;">
+                    <li class="nav-item">
+                        <a class="@((Context.Request.Path.ToString().Contains("") && Context.Request.Path.ToString().Length == 1) ? "nav-link text-light text active mx-4 px-0" : "nav-link text-light text mx-4 px-0")" asp-controller="CutFli" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="@((Context.Request.Path.ToString().Contains("Barbers")) || (Context.Request.Path.ToString().Contains("Services")) || (Context.Request.Path.ToString().Contains("Appointments")) ? "nav-link text-light text active mx-4 px-0" : "nav-link text-light text mx-4 px-0")" asp-controller="CutFli" asp-action="Barbers">Barbers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="@((Context.Request.Path.ToString().Contains("Prices")) ? "nav-link text-light text active mx-4 px-0" : "nav-link text-light text mx-4 px-0")" asp-controller="CutFli" asp-action="Prices">Prices</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" style="margin-left: 16%;">
+                    <li>
+                        <a class="nav-link d-flex calldiv" asp-controller="CutFli" asp-action="Index">
+                            <img src="~/assets/img/icons/Group.svg" class="img-fluid phoneicon ">
+                            <div class=" ps-2 call text-white">
+                                <p class="p-0 m-0 ">Call Us</p>
+                                <p class="p-0 m-0 ">+1-414-520-0699</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="modal" id="navbModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="background-color: black !important; color: #fff;"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-black">
+                <div class="modal-header">
+                    <img src="~/assets/img/Ui/2 2.svg" class=" w-75">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="37" viewBox="0 0 42 37" fill="none">
+                            <rect x="0.5" y="0.5" width="41" height="36" rx="4.5" fill="black" stroke="#E50914" />
+                            <path d="M27.1431 25.8571C27.1431 26.4883 26.6314 27 26.0003 27L11.1431 27C10.512 27 10.0003 26.4883 10.0003 25.8571C10.0003 25.226 10.512 24.7143 11.1431 24.7143L26.0003 24.7143C26.6314 24.7143 27.1431 25.226 27.1431 25.8571ZM11.1431 20.1429L31.7146 20.1429C32.3457 20.1429 32.8574 19.6311 32.8574 19C32.8574 18.3688 32.3457 17.8571 31.7146 17.8571L11.1431 17.8571C10.512 17.8571 10.0003 18.3688 10.0003 19C10.0003 19.6311 10.512 20.1429 11.1431 20.1429ZM11.1431 13.2857L21.4289 13.2857C22.06 13.2857 22.5717 12.774 22.5717 12.1429C22.5717 11.5117 22.06 11 21.4289 11L11.1431 11C10.512 11 10.0003 11.5117 10.0003 12.1429C10.0003 12.774 10.512 13.2857 11.1431 13.2857Z" fill="#E50914" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="modal-body ">
+
+                    <div class="modal-line mb-3 ">
+                        <a class="@((Context.Request.Path.ToString().Contains("") && Context.Request.Path.ToString().Length == 1) ? "nav-link fs-3 text-white" : "nav-link fs-3 text-white")" asp-controller="CutFli" asp-action="Index">Home</a>
+                    </div>
+
+                    <div class="modal-line mb-3">
+                        <a class="@((Context.Request.Path.ToString().Contains("Barbers")) || (Context.Request.Path.ToString().Contains("Services")) || (Context.Request.Path.ToString().Contains("Appointments")) ? "nav-link fs-3 text-white" : "nav-link fs-3 text-white")" asp-controller="CutFli" asp-action="Barbers">Barbers</a>
+                    </div>
+
+                    <div class="modal-line mb-3">
+                        <a class="@((Context.Request.Path.ToString().Contains("Prices")) ? "nav-link fs-3 text-white" : "nav-link fs-3 text-white")" asp-controller="CutFli" asp-action="Prices">Prices</a>
+                    </div>
+
+                    <div class="modal-line d-flex flex-column justify-content-center">
+                        <img src="~/assets/img/icons/Group.svg" class="img-fluid phoneicon ">
+                        <p class="p-0 m-0 text-light my-2">Call Us</p>
+                        <p class="p-0 m-0 text-light">+123 456 789 123</p>
+
+
+                    </div>
+
+                </div>
+
+                <div class="mobile-modal-footer fixed-bottom text-center">
+                    <h3 class="text-white">All copyrights reserved to CUTFLIX 2023</h3>
+                </div>
+            </div>
+        </div>
+    </>
+
+    <main>
+        @RenderBody()
+
+
+        <div class="header p-5">
+            <div class="text-center mb-5">
+                <h3>How to find us?</h3>
+            </div>
+            <div class="row justify-content-center gap-4">
+                <div class="col-lg-4 col-sm-6 bg py-3 mb-3">
+                    <div class="text-center">
+                        <img src="~/assets/img/Ui/2 2.png" alt="" class="img-fluid px-3 ">
+                    </div>
+                    <div class="d-flex vb ps-md-5 ps-2 gap-3">
+                        <div>
+                            <div class="circle">
+                                <img src="~/assets/img/icons/email.svg" alt="" class=" img-fluid ico" >
+                            </div>
+                        </div>
+                        <div>
+                            <p class="p-0 m-0 color txt">E-mail</p>
+                            <p class="text-light txt">cutflixshop@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex vb ps-md-5 ps-2 gap-3">
+                        <div>
+                            <div class="circle">
+                                <img src="~/assets/img/icons/phone.svg" alt="" class=" img-fluid ico" >
+                            </div>
+                        </div>
+                        <div>
+                            <p class="p-0 m-0 color txt">Phone Number</p>
+                            <p class="text-light txt">+1-414-520-0699</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex vb ps-md-5 ps-2 gap-3">
+                        <div>
+                            <div class="circle">
+                                <img src="~/assets/img/icons/loc.svg" alt="" class=" img-fluid ico">
+                            </div>
+                        </div>
+                        <div>
+                            <p class="p-0 m-0 color txt">Location </p>
+                            <p class="text-light  txt">3923 S 76th St, Milwaukee, WI 53220, United States</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex socialmedia-wrap justify-content-around">
+                        <div class="square">
+                            <a href="https://instagram.com/cutflix.llc?igshid=MzRlODBiNWFlZA==">
+
+                                <img class="social " src="~/assets/img/icons/insta.svg" alt="">
+                            </a>
+
+                        </div>
+
+                        <div class="square">
+                            <a href="#">
+                                <img class="social" src="~/assets/img/icons/y.svg" alt="">
+                            </a>
+                        </div>
+                        <div class="square">
+                            <a href="#">
+                                <img class="social" src="~/assets/img/icons/snap.svg" alt="">
+                            </a>
+                        </div>
+                        <div class="square">
+                            <a href="#">
+
+                                <img class="social" src="~/assets/img/icons//fb.png" alt="">
+                            </a>
+                        </div>
+
+                        <div class="square">
+                            <a href="#">
+                                <img class="social" src="~/assets/img/icons/tw.svg" alt="">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-sm-8 mb-3">
+                    <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=3923%20S%2076th%20St,%20Milwaukee,%20WI%2053220,%20United%20States+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" id="gmap_canvas" frameborder="0" scrolling="no" class="img-fluid w-100 h-100"></iframe>
+                </div>
+            </div>
+        </div>
+        <footer class="container-fluid">
+            <div class="d-md-flex row reverse-cols ">
+                <div class="col-lg-5 Hours col-sm-12 p-5">
+                    <div class="d-flex justify-content-between">
+                        <h3 class=" pe-2">Working Hours</h3>
+                        <p class="pt-3 border-bottom border-2 w-50">
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <div>
+                            <h4>Monday</h4>
+                        </div>
+                        <div>
+                            <h4>10:00 AM TO 06:00 PM</h4>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <div>
+                            <h4>Tuesday</h4>
+                        </div>
+                        <div>
+                            <h4>10:00 AM TO 08:00 PM</h4>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <div>
+                            <h4>Wednesday</h4>
+                        </div>
+                        <div>
+                            <h4>10:00 AM TO 08:00 PM</h4>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <div>
+                            <h4>Thursday</h4>
+                        </div>
+                        <div>
+                            <h4>10:00 AM TO 08:00 PM</h4>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <div>
+                            <h4>Friday</h4>
+                        </div>
+                        <div>
+                            <h4>10:00 AM TO 08:00 PM</h4>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <div>
+                            <h4>Saturday</h4>
+                        </div>
+                        <div>
+                            <h4>10:00 AM TO 08:00 PM</h4>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between my-3">
+                        <div>
+                            <h4>Sunday</h4>
+                        </div>
+                        <div>
+                            <h4>10:00 AM TO 06:00 PM</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+                @Html.Partial("_ContactUs",new CUTFLI.ViewModels.ContactUsViewModel())
+                 
+            </div>
+        </footer>
+    </main>
+
+    <script src="~/js/index.js"></script>
+    <script src="~/js/Booking.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @await Component.InvokeAsync("NToastNotify")
+</body>
+</html>

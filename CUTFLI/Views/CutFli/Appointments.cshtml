@@ -1,0 +1,141 @@
+﻿@using CUTFLI.Enums
+@model CUTFLI.ViewModels.BookAppointments
+
+@{
+    Layout = "~/Views/Shared/_UiLayout.cshtml";
+}
+
+<div class="bg-image position-relative">
+    <img src="~/assets/img/Ui/Frame0.png" class="w-100 img-fluid" />
+    <div class="overlay2"></div>
+    <div class="mask2 text-light d-flex justify-content-center align-items-center">
+        <h1 class="fw-bolder">Barbers</h1>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <img src="~/assets/img/Ui/2 2.png" alt="" class="imglogo">
+</div>
+
+<div class="container" id="booking">
+    <div class="text-center">
+        <p class=" text text-center"> @Context.Session.GetString("barber") Services / @Context.Session.GetString("service")</p>
+    </div>
+    <div class="d-flex justify-content-between ">
+        <div class="">
+            <h5 class="card-title text">@Context.Session.GetString("service")</h5>
+
+        </div>
+        <div class="">
+            <h5 class="card-title text">@Context.Session.GetString("servicePrice") $</h5>
+        </div>
+    </div>
+
+    <div class="row pt-2">
+        <p id="current-day" class=" text-white text"></p>
+    </div>
+
+
+    <div class="d-lg-flex my-3 justify-content-between">
+
+        <div class="col-lg-6 col-sm-12 border border-2 p-4 rounded">
+            <p class="txt">Date</p>
+
+            <div class="d-flex justify-content-center">
+                <button id="prev-month-btn" class="previous text-center bg-transparent border-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+                        <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
+                    </svg>
+                </button>
+                <h5 id="month-year" class="text-center p-0 pt-2"></h5>
+                <button id="next-month-btn" class="previous text-center bg-transparent border-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="table-responsive pt-3">
+                <table class="table table-borderless text-light">
+                    <tbody id="calendar" class="text-center"></tbody>
+                </table>
+            </div>
+            <div class="text-center">
+            </div>
+        </div>
+        <br>
+        <div class="rounded col-lg-5 col-sm-12 border border-2 ms-lg-4 p-4">
+            <p class="txt">Time</p>
+            <div class="d-flex flex-wrap justify-content-around pt-3 " id="partial">
+                @await Html.PartialAsync("_Appointments", Model.CustomerAppointments)
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <h1 class="fs-2">Personal Information</h1>
+    </div>
+
+    @await Html.PartialAsync("Book",Model.People)
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        function selectDay(selected) {
+            var date = new Date(selected.year, selected.monthIndex, selected.day);
+            var dateRequest = date.toISOString();
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var responseData = xhr.responseText;
+                        const appointments = document.getElementById("partial");
+                        appointments.innerHTML = responseData;
+                    } else {
+                        console.error("Request failed with status:", xhr.status);
+                    }
+                }
+            };
+
+            xhr.open("GET", `/CutFli/GetAppointmentsByDate?date=${dateRequest}`, true);
+            xhr.send();
+
+            var selectedSpan = document.querySelector(".selected-day");
+            if (selectedSpan) {
+                selectedSpan.classList.remove("selected-day");
+            }
+
+            var span = event.target;
+            if (span.nodeName === "SPAN") {
+                span.classList.add("selected-day");
+            }
+
+            var formattedDate = date.toLocaleDateString('en-US', {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            document.getElementById('current-day').innerHTML = formattedDate;
+
+        }
+        function select(e) {
+            var times = document.getElementsByClassName("time");
+
+            const hiddenInput = e.querySelector('input[type="hidden"]');
+            document.getElementById("AppointmentId").value = hiddenInput.value;
+            for (i = 0; i < times.length; i++) {
+                if (times[i].classList.contains("selectedTime")) {
+                    times[i].classList.remove("selectedTime");
+                }
+            }
+            e.classList.add("selectedTime");
+        }
+    </script>
+    }
