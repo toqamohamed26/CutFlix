@@ -2,12 +2,17 @@
 @{
     Layout = "~/Views/Shared/_UiLayout.cshtml";
 }
-<div class="play">
-    <video id="myVideo" class="img-fluid w-100" autoplay>
+<div class="play" style="position: relative;">
+    <video id="myVideo" class="img-fluid w-100" poster="~/assets/img/ui/poster.png">
         <source id="mp4_src" src="@Url.Action("GetVideo","CutFli", new { videoName = ViewBag.Video })" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    <svg id="playButton" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 35 34" fill="none" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 31.884C25.7519 31.884 32.4414 25.2204 32.4414 17.0001C32.4414 8.77992 25.7521 2.11613 17.5 2.11613C9.2481 2.11613 2.55856 8.77992 2.55856 17.0001C2.55856 25.2202 9.2481 31.884 17.5 31.884ZM17.5 33.5377C26.6687 33.5377 34.1016 26.1334 34.1016 17.0001C34.1016 7.8665 26.6687 0.462402 17.5 0.462402C8.33114 0.462402 0.898438 7.8665 0.898438 17.0001C0.898438 26.1334 8.33114 33.5377 17.5 33.5377Z" fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M21.8142 17.0003L14.1798 11.9303V22.0704L21.8142 17.0003ZM23.3566 16.0371C24.0467 16.4954 24.0467 17.5053 23.3566 17.9636L14.3263 23.9607C13.554 24.4736 12.5195 23.922 12.5195 22.9974V11.0033C12.5195 10.0787 13.554 9.52724 14.3263 10.0401L23.3566 16.0371Z" fill="white" />
+    </svg>
 </div>
+
 
 <div class="d-flex justify-content-center">
     <img src="~/assets/img/Ui/2 2.png" alt="" class="imglogo">
@@ -28,7 +33,7 @@
 
 
 <div class="p-md-5 m-md-4">
-    <div class="overlay position-relative">
+    <div class=" position-relative">
         <div class="d-flex flex-wrap p-2">
             @foreach (var item in Model)
             {
@@ -37,7 +42,9 @@
                         <a asp-controller="CutFli" asp-action="Services" asp-route-barber="@item.Id">
                             <img src="@("data:image/*;base64,"+Convert.ToBase64String(item.Image))" alt="" class="w-100 p-3 homeimg" style="height: 750px;">
                     </a>
-                    <div class="position-absolute text-overlay translate-middle-x text-center bottom-0 start-50 translate-middle-x">
+                        <div class="overlayy"></div>
+
+                        <div class="maskk text-light d-flex justify-content-center align-items-center">
                             <h3 class="text-center text-uppercase py-4">@item.FullName</h3>
                         </div>
                 </div>

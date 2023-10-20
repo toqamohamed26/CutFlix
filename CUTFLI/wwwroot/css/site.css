@@ -153,6 +153,10 @@ iframe {
         width: 200px !important;
     }
 
+    #playButton {
+        width: 35px !important;
+        height: 34px !important;
+    }
     .phoneicon {
         width: 2em !important;
         height: 2em !important;
@@ -322,7 +326,6 @@ td {
 .next {
     color: white;
 }
-
 .overlayy {
     position: absolute;
     top: 0;
