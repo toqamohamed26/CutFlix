@@ -3,7 +3,6 @@ body {
     word-wrap: break-word !important;
     text-overflow: ellipsis !important;
 }
-
 .navbar, .text, .nav-link, .txt {
     color: #FFF;
     font-size: 20px !important;
@@ -22,6 +21,10 @@ body {
     font-weight: 600;
 }
 
+
+iframe {
+    border-radius: 10px !important;
+}
 
 .text-overlay {
     left: 50%;
@@ -181,6 +184,10 @@ body {
 
     .centered {
         display: none;
+    }
+    .navbar-brand {
+        width: 80% !important;
+        padding-left: 20%;
     }
 }
 
