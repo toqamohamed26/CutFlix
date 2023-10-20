@@ -20,7 +20,7 @@
 <body style="background-color: black; color: #fff;">
     <nav class="navbar navbar-expand-lg ">
         <div class="container reverse">
-            <div class="mobile-toggler d-lg-none d-flex" style="order: 0 !important;">
+            <div class="mobile-toggler d-lg-none d-flex" >
                 <a href="#" data-bs-toggle="modal" data-bs-target="#navbModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="42" height="37" viewBox="0 0 42 37" fill="none">
                         <rect x="0.5" y="0.5" width="41" height="36" rx="4.5" fill="black" stroke="#E50914" />
@@ -29,11 +29,11 @@
                     </svg>
                 </a>
             </div>
-            <a class="navbar-brand" style="order: 1 !important;">
+            <a class="navbar-brand">
                 <img src="~/assets/img/Ui/2 2.svg" class=" w-100">
             </a>
           
-            <div class="collapse navbar-collapse" id="navbarNav" style="order: 2 !important;">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav " style="margin-left: 16%;">
                     <li class="nav-item">
                         <a class="@((Context.Request.Path.ToString().Contains("") && Context.Request.Path.ToString().Length == 1) ? "nav-link text-light text active mx-4 px-0" : "nav-link text-light text mx-4 px-0")" asp-controller="CutFli" asp-action="Index">Home</a>
@@ -50,8 +50,8 @@
                         <a class="nav-link d-flex calldiv" asp-controller="CutFli" asp-action="Index">
                             <img src="~/assets/img/icons/Group.svg" class="img-fluid phoneicon ">
                             <div class=" ps-2 call text-white">
-                                <p class="p-0 m-0 ">Call Us</p>
-                                <p class="p-0 m-0 ">+1-414-520-0699</p>
+                                <p class="p-0 m-0 text-nowrap">Call Us</p>
+                                <p class="p-0 m-0 text-nowrap">+1-414-520-0699</p>
                             </div>
                         </a>
                     </li>
@@ -59,7 +59,7 @@
             </div>
         </div>
     </nav>
-    <div class="modal" id="navbModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="background-color: black !important; color: #fff;"
+    <div class="modal " id="navbModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="background-color: black !important; color: #fff;"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-black">
@@ -103,8 +103,7 @@
                 </div>
             </div>
         </div>
-    </>
-
+</div>
     <main>
         @RenderBody()
 
@@ -193,6 +192,7 @@
                 </div>
             </div>
         </div>
+        
         <footer class="container-fluid">
             <div class="d-md-flex row reverse-cols ">
                 <div class="col-lg-5 Hours col-sm-12 p-5">
