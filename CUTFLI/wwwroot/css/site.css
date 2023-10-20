@@ -427,7 +427,6 @@ a {
 .modal-content {
     border-radius: 0;
     height: 100vh;
-    overflow-y: scroll;
     background-color: #000;
 }
 
