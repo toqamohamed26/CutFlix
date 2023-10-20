@@ -9,7 +9,7 @@ using CUTFLI.Models;
 using CUTFLI.ViewModels;
 using NToastNotify;
 using AutoMapper;
-using System.Security.Claims;   
+using System.Security.Claims;
 
 namespace CUTFLI.Controllers
 {
@@ -22,7 +22,7 @@ namespace CUTFLI.Controllers
         private readonly ILogger<VideosController> _logger;
 
         public VideosController(CUTFLIDbContext context,
-            IToastNotification toastNotification, 
+            IToastNotification toastNotification,
             IMapper mapper,
             ILogger<VideosController> logger)
         {
@@ -73,18 +73,11 @@ namespace CUTFLI.Controllers
 
                         var file = Path.Combine("wwwroot", "Videos\\", videoUploaded.FileName);
 
-                        if (allowedExtensions.Contains(Path.GetExtension(videoUploaded.FileName).ToLower()))
+                        using (var stream = new FileStream(file, FileMode.Create))
                         {
-                            using (var stream = new FileStream(file, FileMode.Create))
-                            {
-                                await videoUploaded.CopyToAsync(stream);
-                            }
+                            await videoUploaded.CopyToAsync(stream);
                         }
-                        else
-                        {
-                            ModelState.AddModelError("Video", "Video extension invalid");
-                            return View(videoModel);
-                        }
+
                     }
                     else
                     {
