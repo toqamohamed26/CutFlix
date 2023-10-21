@@ -212,7 +212,7 @@
 
 
         function selectDay(selected) {
-            var date = new Date(selected.year, selected.monthIndex, selected.day);
+            var date = new Date(selected.year, selected.monthIndex, selected.day + 1);
             var dateRequest = date.toISOString();
 
             var xhr = new XMLHttpRequest();
