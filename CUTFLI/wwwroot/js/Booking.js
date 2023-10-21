@@ -122,28 +122,28 @@
 //  };
 //  return day;
 //}
-////function selectDay(selected) {
-////    var date = new Date(selected.year, selected.monthIndex, selected.day);
+//function selectDay(selected) {
+//    var date = new Date(selected.year, selected.monthIndex, selected.day);
   
-////    var selectedSpan = document.querySelector(".selected-day");
-////    if (selectedSpan) {
-////      selectedSpan.classList.remove("selected-day");
-////    }
+//    var selectedSpan = document.querySelector(".selected-day");
+//    if (selectedSpan) {
+//      selectedSpan.classList.remove("selected-day");
+//    }
   
-////    var span = event.target;
-////    if (span.nodeName === "SPAN") {
-////      span.classList.add("selected-day");
-////    }
+//    var span = event.target;
+//    if (span.nodeName === "SPAN") {
+//      span.classList.add("selected-day");
+//    }
 
-////    var formattedDate = date.toLocaleDateString('en-US', {
-////      weekday: 'long',
-////      month: 'long',
-////      day: 'numeric'
-////    });
+//    var formattedDate = date.toLocaleDateString('en-US', {
+//      weekday: 'long',
+//      month: 'long',
+//      day: 'numeric'
+//    });
     
-////    document.getElementById('current-day').innerHTML = formattedDate;
+//    document.getElementById('current-day').innerHTML = formattedDate;
 
-////  }
+//  }
 
 //function displayDaysNumber() {
 //  for (i = 0; i < weeksArray.length; i++) {
