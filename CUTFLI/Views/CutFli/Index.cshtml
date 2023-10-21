@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_UiLayout.cshtml";
 }
 <div class="play" style="position: relative;">
-    <video id="myVideo" class="img-fluid w-100" poster="~/assets/img/ui/poster.png">
+    <video id="myVideo" class="img-fluid h-100 w-100" poster="~/assets/img/ui/poster.png">
         <source id="mp4_src" src="@Url.Action("GetVideo","CutFli", new { videoName = ViewBag.Video })" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -65,6 +65,7 @@
     </div>
 </div>
 
+<script src="~/js/index.js"></script>
 
 @section Scripts {
     @{
