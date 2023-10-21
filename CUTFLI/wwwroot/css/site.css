@@ -84,9 +84,11 @@ iframe {
     .card-text {
         font-size: .8em !important;
     }
-    .bookthis{
-        width : 100% !important;
-        border-radius :12% !important;
+    .bookthis {
+        width: 100% !important;
+        border-radius: 10px !important;
+        border: 2px solid #FFF;
+        background: #E50914;
     }
     .active {
         width: 70px !important;
