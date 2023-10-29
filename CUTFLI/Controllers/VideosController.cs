@@ -112,14 +112,20 @@ namespace CUTFLI.Controllers
             }
         }
 
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Videos == null)
             {
                 return NotFound();
             }
-            var videoModel = new VideoViewModel().Id = id;
-            return PartialView("_deleteVideo", videoModel);
+
+            var video = await _context.Videos.FindAsync(id);
+            if (video == null)
+            {
+                return NotFound();
+            }
+            var videoModel = _mapper.Map<VideoViewModel>(video);
+            return View(videoModel);
         }
 
         [HttpPost, ActionName("Delete")]

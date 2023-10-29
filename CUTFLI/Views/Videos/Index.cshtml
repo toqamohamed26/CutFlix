@@ -32,10 +32,9 @@
                                 @item.CreatedDate?.ToString("dd-MM-yyyy")
                             </td>
                             <td>
-                                <a data-bs-toggle="modal" data-bs-target="@("#deleteDialog-"+item.Id)" data-url="@Url.Action($"Delete/{item.Id}")"><i class="bx bx-trash me-1 text-danger"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Id"><i class="bx bx-trash me-1 text-danger"></i></a>
                             </td>
                         </tr>
-                        @await Html.PartialAsync("_deleteVideo",item)
                     }
                 </tbody>
             </table>

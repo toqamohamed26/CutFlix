@@ -288,15 +288,20 @@ namespace CUTFLI.Controllers
         }
 
         [ServiceFilter(typeof(AdminFilter))]
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
-            var userModel = new UserViewModel().Id = id;
-            return PartialView("_deleteUser", userModel);
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var userModel = _mapper.Map<UserViewModel>(user);
+            return View(userModel);
         }
 
         [HttpPost, ActionName("Delete")]

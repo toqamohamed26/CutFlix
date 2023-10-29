@@ -40,15 +40,20 @@ namespace CUTFLI.Controllers
             }
         }
 
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.ContactUs == null)
             {
                 return NotFound();
             }
 
-            var contact = new ContactUsViewModel().Id = id;
-            return PartialView("_deleteContact", contact);
+            var contact = await _context.ContactUs.FindAsync(id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+            var contactModel = _mapper.Map<ContactUsViewModel>(contact);
+            return View(contactModel);
         }
 
         [HttpPost, ActionName("Delete")]

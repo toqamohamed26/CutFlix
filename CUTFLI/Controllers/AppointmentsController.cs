@@ -257,15 +257,20 @@ namespace CUTFLI.Controllers
             }
         }
 
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Appointments == null)
             {
                 return NotFound();
             }
 
-            var appointment = new AppointmentViewModel().Id = id;
-            return PartialView("_deleteAppointment", appointment);
+            var appointment = await _context.Appointments.FindAsync(id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+            var appointmentModel = _mapper.Map<AppointmentViewModel>(appointment);
+            return View(appointmentModel);
         }
 
         [HttpPost, ActionName("Delete")]
