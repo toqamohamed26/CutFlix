@@ -131,8 +131,12 @@ namespace CUTFLI.Controllers
                     }).ToList()
                 }).ToListAsync();
 
-                var response = new BookAppointments();
-                response.CustomerAppointments = appointments;
+                var response = new BookAppointments(){};
+                response.CustomerAppointments = new AppointmentsWithDate
+                {
+                    StartDate = startDate,
+                    Appointments = appointments,
+                };
                 response.People = new PeopleViewModel();
 
 
@@ -180,7 +184,12 @@ namespace CUTFLI.Controllers
                         StartTime = x.StartTime
                     }).ToList()
                 }).ToListAsync();
-                return PartialView("_Appointments", appointments);
+
+                var result = new AppointmentsWithDate();
+                result.StartDate = startDate;
+                result.Appointments = appointments;
+
+                return PartialView("_Appointments", result);
             }
             catch (Exception ex)
             {

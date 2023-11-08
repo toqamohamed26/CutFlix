@@ -1,7 +1,7 @@
 ﻿@using CUTFLI.Enums
-@model IEnumerable<CUTFLI.ViewModels.DateAppointments>
+@model CUTFLI.ViewModels.AppointmentsWithDate
 
-@foreach (var item in Model)
+@foreach (var item in Model.Appointments)
 {
     <button class="border my-2  border-1 rounded mx-3 time  text-white px-4" onclick="select(this)">
         @*<input type="hidden" value="@item.Id">
