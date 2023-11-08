@@ -1,10 +1,10 @@
 ﻿@using CUTFLI.Enums
-@model IEnumerable<CUTFLI.ViewModels.CustomerAppointments>
+@model IEnumerable<CUTFLI.ViewModels.DateAppointments>
 
 @foreach (var item in Model)
 {
     <button class="border my-2  border-1 rounded mx-3 time  text-white px-4" onclick="select(this)">
-        <input type="hidden" value="@item.Id">
-        @(new DateTime(item.StartTime.Ticks).ToString("hh:mm tt"))
+        @*<input type="hidden" value="@item.Id">
+    @(new DateTime(item.StartTime.Ticks).ToString("hh:mm tt"))*@
     </button>
 }

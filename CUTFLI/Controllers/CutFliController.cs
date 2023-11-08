@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using NToastNotify;
+using System.Globalization;
 using static CUTFLI.Enums.SystemEnums;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 
@@ -82,6 +83,9 @@ namespace CUTFLI.Controllers
             try
             {
                 _logger.LogDebug($"CutFliController-Appointments service={service} date={date}");
+                DateTime startDate = DateTime.Now;
+                DateTime endDate = startDate.AddDays(4);
+
                 if (service != null)
                 {
                     var serviceDb = await _dbContext.Services.FirstOrDefaultAsync(x => x.Id == (int)service);
@@ -100,23 +104,37 @@ namespace CUTFLI.Controllers
                         _toastNotification.AddErrorToastMessage("Wrong date");
                         return View(new List<CustomerAppointments>());
                     }
-                    date = date.Value.Date;
                     ViewData["value"] = date?.ToString("yyyy-MM-dd");
-                }
-                else
-                {
-                    ViewData["value"] = DateTime.Now.ToString("yyyy-MM-dd");
-                    date = DateTime.Now.Date;
+
+                    startDate = (DateTime)date;
+                    endDate = startDate.AddDays(4);
                 }
 
                 int barber = (int)HttpContext.Session.GetInt32("barberId");
-                var appointments = await _dbContext.Appointments.Where(x => x.UserId == barber && x.Status == SystemEnums.AppointmentStatus.Available && x.Date.Date == date).Include(x => x.User).ToListAsync();
 
-                var customerAppointments = _mapper.Map<List<Appointment>, List<CustomerAppointments>>(appointments);
+                var appointments = await _dbContext.Appointments.Where(x => x.UserId == barber
+                && x.Status == SystemEnums.AppointmentStatus.Available
+                && x.Date.Date >= startDate.Date && x.Date.Date <= endDate.Date)
+                    .Include(x => x.User)
+                    .GroupBy(x => x.Date)
+                    .Select(x =>
+                new DateAppointments
+                {
+                    StartDate = startDate,
+                    DayName = x.Key.ToString("dddd", CultureInfo.InvariantCulture),
+                    DayNumber = x.Key.ToString("MMMM d") + GetDaySuffix(x.Key.Day),
+                    Appointments = x.Select(x =>
+                    new StartTimeViewModel
+                    {
+                        Id = x.Id,
+                        StartTime = x.StartTime
+                    }).ToList()
+                }).ToListAsync();
 
                 var response = new BookAppointments();
-                response.CustomerAppointments = customerAppointments;
+                response.CustomerAppointments = appointments;
                 response.People = new PeopleViewModel();
+
 
                 return View(response);
             }
@@ -133,11 +151,30 @@ namespace CUTFLI.Controllers
             try
             {
                 _logger.LogDebug($"CutFliController-GetAppointmentsByDate date={date}");
-                DateTime dateTime = Convert.ToDateTime(date);
+                DateTime startDate = Convert.ToDateTime(date);
+                DateTime endDate = startDate.AddDays(4);
+
                 int? barber = (int)HttpContext.Session.GetInt32("barberId");
-                var appointments = await _dbContext.Appointments.Where(x => x.UserId == barber && x.Status == SystemEnums.AppointmentStatus.Available && x.Date.Date == dateTime.Date).ToListAsync();
-                var customerAppointments = _mapper.Map<List<Appointment>, List<CustomerAppointments>>(appointments);
-                return PartialView("_Appointments", customerAppointments);
+
+                var appointments = await _dbContext.Appointments.Where(x => x.UserId == barber
+                && x.Status == SystemEnums.AppointmentStatus.Available
+                && x.Date.Date >= startDate.Date && x.Date.Date <= endDate.Date)
+                    .Include(x => x.User)
+                    .GroupBy(x => x.Date)
+                    .Select(x =>
+                new DateAppointments
+                {
+                    StartDate = startDate,
+                    DayName = x.Key.ToString("dddd", CultureInfo.InvariantCulture),
+                    DayNumber = x.Key.ToString("MMMM d") + GetDaySuffix(x.Key.Day),
+                    Appointments = x.Select(x =>
+                    new StartTimeViewModel
+                    {
+                        Id = x.Id,
+                        StartTime = x.StartTime
+                    }).ToList()
+                }).ToListAsync();
+                return PartialView("_Appointments", appointments);
             }
             catch (Exception ex)
             {
@@ -330,6 +367,25 @@ namespace CUTFLI.Controllers
             {
                 _toastNotification.AddErrorToastMessage("Error Found");
                 _logger.LogError(ex, "CutFliController-SendEmail exception :");
+            }
+        }
+        public static string GetDaySuffix(int day)
+        {
+            if (day >= 11 && day <= 13)
+            {
+                return "th";
+            }
+
+            switch (day % 10)
+            {
+                case 1:
+                    return "st";
+                case 2:
+                    return "nd";
+                case 3:
+                    return "rd";
+                default:
+                    return "th";
             }
         }
     }
