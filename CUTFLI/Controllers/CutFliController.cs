@@ -156,6 +156,12 @@ namespace CUTFLI.Controllers
 
                 int? barber = (int)HttpContext.Session.GetInt32("barberId");
 
+                if (startDate.Date < DateTime.Now.Date)
+                {
+                    startDate = DateTime.Now;
+                    endDate = startDate.AddDays(4);
+                }
+
                 var appointments = await _dbContext.Appointments.Where(x => x.UserId == barber
                 && x.Status == SystemEnums.AppointmentStatus.Available
                 && x.Date.Date >= startDate.Date && x.Date.Date <= endDate.Date)
