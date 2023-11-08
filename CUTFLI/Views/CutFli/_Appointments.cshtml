@@ -1,10 +1,110 @@
 ﻿@using CUTFLI.Enums
 @model CUTFLI.ViewModels.AppointmentsWithDate
+<div class=" py-2 d-flex justify-content-between">
+    <a href="@Url.Action("GetAppointmentsByDate" , "CutFli",new {date = Model.StartDate.AddDays(-4)}  )"class="text-white np"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+  <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+</svg></a>
+    <a href="@Url.Action("GetAppointmentsByDate" , "CutFli",new {date = Model.StartDate.AddDays(4)}  )" class="text-white np"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="26" height="26" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                    </svg></a>
+</div>@*
+<p class="text-center text-uppercase text-light">
+    TIME ZONE : <u>
+        Central time
+        (GMT-05:00)
+    </u>
+</p>*@
+<div class="d-flex">
 
+    @foreach (var item in Model.Appointments)
+    {
+
+        <div class="d-flex flex-column col-md-2 col-4" >
+            <h6 class="px-4 text-center">
+                @item.DayName
+            </h6>
+            <p class="text-center fs-6">@item.DayNumber</p>
+          
+            @foreach (var appointment in item.Appointments)
+            {
+                <button class="border my-2 w-auto border-1 rounded mx-3 time  text-white" >
+                    @DateTime.Today.Add(appointment.StartTime).ToString("hh:mm tt")
+
+                </button>
+            }
+        </div>
+    }
+
+</div>
+@*
+<div class="table-responsive">
+    <table class="table text-center text-light ">
+        <thead>
+            <tr>
+                @foreach (var item in Model.Appointments)
+                {
+                    <th scope="col" class="px-4">
+                        @item.DayName
+                        <p>@item.DayNumber</p>
+                    </th>
+                }
+                
+            </tr>
+
+        </thead>
+
+        <tbody style="border-bottom: 0px solid #000 !important">
+            <p class="text-center text-uppercase text-light">
+                TIME ZONE : <u>
+                    Central time
+                    (GMT-05:00)
+                </u>
+            </p>
+            <tr>
+
+                <td class="">
+                    @foreach (var item in Model.Appointments)
+                    {
+                        
+                    }
+                    @*   <ul class="list-group no-bullets" style=" list-style-type: none;">
+                        <li>
+                            <button class="border my-2  border-1 rounded mx-3 time  text-white px-4"
+                                    onclick="select(event)">
+
+                                10:00 AM
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="border my-2  border-1 rounded mx-3 time  text-white px-4"
+                                    onclick="select(event)">
+
+                                10:00 AM
+                            </button>
+                        </li>
+                    </ul>
+                </td>
+
+            </tr>
+
+
+
+        </tbody>
+
+    </table>
+
+
+</div>
+*@
+@*
 @foreach (var item in Model.Appointments)
 {
+
     <button class="border my-2  border-1 rounded mx-3 time  text-white px-4" onclick="select(this)">
         @*<input type="hidden" value="@item.Id">
-    @(new DateTime(item.StartTime.Ticks).ToString("hh:mm tt"))*@
+    @(new DateTime(item.StartTime.Ticks).ToString("hh:mm tt"))
     </button>
-}
+}*@

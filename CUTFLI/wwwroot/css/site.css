@@ -3,6 +3,16 @@ body {
     word-wrap: break-word !important;
     text-overflow: ellipsis !important;
 }
+
+.np:hover {
+    color: #E50914 !important;
+}
+
+ul.no-bullets {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 .navbar, .text, .nav-link, .txt {
     color: #FFF;
     font-size: 20px !important;
@@ -519,3 +529,4 @@ a {
         transform: translateX(0);
     }
 }
+
