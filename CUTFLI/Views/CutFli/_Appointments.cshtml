@@ -15,20 +15,21 @@
             </svg>
         </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex border border-2 rounded p-2">
 
-        @foreach (var item in Model.Appointments)
-        {
-            <div class="d-flex flex-column col-md-2 col-4">
-                <h6 class="px-4 text-center">
-                    @item.DayName
-                </h6>
-                <p class="text-center fs-6">@item.DayNumber</p>
+    @foreach (var item in Model.Appointments)
+    {
 
-                @foreach (var appointment in item.Appointments)
-                {
-                    <button class="border my-2 w-auto border-1 rounded mx-3 time  text-white" onclick="select(this,@appointment.Id)">
-                        @DateTime.Today.Add(appointment.StartTime).ToString("hh:mm tt")
+        <div class=" d-flex flex-column col-md-2 col-4" >
+            <h6 class="px-4 day text-center">
+                @item.DayName
+            </h6>
+                <p class="text-center DayNumber">@item.DayNumber</p>
+          
+            @foreach (var appointment in item.Appointments)
+            {
+                <button class="border my-2 w-auto border-1 rounded mx-3 time  text-white" onclick="select(this,@appointment.Id)">
+                    @DateTime.Today.Add(appointment.StartTime).ToString("hh:mm tt")
 
                     </button>
                 }
