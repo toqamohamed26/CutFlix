@@ -155,12 +155,12 @@
 
         </div> -->
     </div>
-
+    <input type="text" id="selectedAppointmentId" name="AppointmentId" />
     <div class="row">
         <h1 class="fs-2">Personal Information</h1>
     </div>
-
-    <form class="py-4 ">
+    @await Html.PartialAsync("Book", Model.People)
+    <!--<form class="py-4 ">
         <div class="form-group">
             <input type="text" class="form-control form-control-lg border border-2" id="Name"
                    placeholder="Your Name" style="background-color: black;">
@@ -185,7 +185,7 @@
                 <h4 class="text-capitalize px-5">Book</h4>
             </button>
         </div>
-    </form>
+    </form>-->
 
 </div>
 @section Scripts {
@@ -360,17 +360,17 @@
             document.getElementById('current-day').innerHTML = formattedDate;
 
         }
-        function select(e) {
+        function select(e, appId) {
             var times = document.getElementsByClassName("time");
-
-            const hiddenInput = e.querySelector('input[type="hidden"]');
-            document.getElementById("AppointmentId").value = hiddenInput.value;
             for (i = 0; i < times.length; i++) {
                 if (times[i].classList.contains("selectedTime")) {
                     times[i].classList.remove("selectedTime");
                 }
             }
             e.classList.add("selectedTime");
+            var selectedAppointmentId = appId
+            $('#selectedAppointmentId').val(selectedAppointmentId);
+            $('input[name="AppointmentId"]').val(selectedAppointmentId)
         }
 
         function displayDaysNumber() {

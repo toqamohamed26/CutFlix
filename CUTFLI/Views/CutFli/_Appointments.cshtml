@@ -29,14 +29,13 @@
           
             @foreach (var appointment in item.Appointments)
             {
-                <button class="border my-2 w-auto border-1 rounded mx-3 time  text-white" >
+                <button class="border my-2 w-auto border-1 rounded mx-3 time  text-white" onclick="select(this,@appointment.Id)">
                     @DateTime.Today.Add(appointment.StartTime).ToString("hh:mm tt")
 
                 </button>
             }
         </div>
     }
-
 </div>
 @*
 <div class="table-responsive">
