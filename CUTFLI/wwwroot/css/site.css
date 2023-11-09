@@ -75,6 +75,13 @@ iframe {
 
 
 @media screen and (max-width: 1024px) {
+    .day{
+        font-size:.75rem !important;
+        width:100% !important;
+    }
+    .DayNumber {
+        font-size: .8rem !important;
+    }
     .img {
         width: 23px;
     }
