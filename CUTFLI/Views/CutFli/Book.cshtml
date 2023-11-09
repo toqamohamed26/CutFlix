@@ -44,12 +44,10 @@
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'), 
-            data: formData, // Form data
+            data: formData,
             success: function (result) {
                 $('#bookingFormContainer').html(result)
             },
-            error: function (xhr, status, error) {
-                console.log(xhr.responseText); 
         });
     });
     </script>
