@@ -31,23 +31,24 @@
 </div>
 
 @section Scripts {
+        $('#bookingForm').submit(function (e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: formData,
+                success: function (result) {
+                    $('#bookingFormContainer').html(result)
+                },
+            });
+        });
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+
     }
     }
-    <script>
-    $('#bookingForm').submit(function (e) {
-        e.preventDefault();
-
-        var formData = $(this).serialize();
-
-        $.ajax({
-            url: $(this).attr('action'),
-            type: $(this).attr('method'), 
-            data: formData,
-            success: function (result) {
-                $('#bookingFormContainer').html(result)
-            },
-        });
-    });
-    </script>
+    

@@ -339,7 +339,7 @@ namespace CUTFLI.Controllers
                         await _dbContext.AddAsync(newCustomer);
                         await _dbContext.SaveChangesAsync();
                         id = newCustomer.Id;
-                        email = newCustomer.Email;
+                          email = newCustomer.Email;
                     }
                     else
                     {
