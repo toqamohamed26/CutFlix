@@ -37,47 +37,11 @@
                     <button class="border my-2 w-auto border-1 rounded mx-3 time  text-white" onclick="select(this,@appointment.Id)">
                         @DateTime.Today.Add(appointment.StartTime).ToString("hh:mm tt")
 
-                    </button>
-                }
-            </div>
-        }
-    </div>
+                </button>
+            }
+        </div>
+    }
 </div>
-@*
-<div class="table-responsive">
-    <table class="table text-center text-light ">
-        <thead>
-            <tr>
-                @foreach (var item in Model.Appointments)
-                {
-                    <th scope="col" class="px-4">
-                        @item.DayName
-                        <p>@item.DayNumber</p>
-                    </th>
-                }
-                
-            </tr>
-
-        </thead>
-
-        <tbody style="border-bottom: 0px solid #000 !important">
-            <p class="text-center text-uppercase text-light">
-                TIME ZONE : <u>
-                    Central time
-                    (GMT-05:00)
-                </u>
-            </p>
-            <tr>
-
-                <td class="">
-                    @foreach (var item in Model.Appointments)
-                    {
-                        
-                    }
-                    @*   <ul class="list-group no-bullets" style=" list-style-type: none;">
-                        <li>
-                            <button class="border my-2  border-1 rounded mx-3 time  text-white px-4"
-                                    onclick="select(event)">
 
                                 10:00 AM
                             </button>
@@ -113,16 +77,3 @@
     @(new DateTime(item.StartTime.Ticks).ToString("hh:mm tt"))
     </button>
 }*@
-<script>
-    function getAppointmentsByDate(date) {
-        $.ajax({
-            url: '/CutFli/GetAppointmentsByDate',
-            type: 'GET',
-            data: { date: date },
-            success: function (result) {
-                $('#PartialViewContainer').html(result);
-            },
-        });
-    }
-
-</script>

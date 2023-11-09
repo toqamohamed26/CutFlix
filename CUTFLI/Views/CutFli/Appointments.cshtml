@@ -15,73 +15,7 @@
 <div class="d-flex justify-content-center">
     <img src="~/assets/img/Ui/2 2.png" alt="" class="imglogo">
 </div>
-@*
-<div class="container" id="booking">
-    @*<div class="text-center">
-        <p class=" text text-center"> @Context.Session.GetString("barber") Services / @Context.Session.GetString("service")</p>
-    </div>
-    <div class="d-flex justify-content-between ">
-        <div class="">
-            <h5 class="card-title text">@Context.Session.GetString("service") Haircut with @Context.Session.GetString("barber") service</h5>
-            <h5 class="card-title text"> @Context.Session.GetString("servicePrice") $</h5>
 
-        </div>
-        <div class="">
-            <h5 class="card-title text">@Context.Session.GetString("servicePrice") $</h5>
-        </div>
-    </div>
-
-   @* <div class="row pt-2">
-        <p id="current-day" class=" text-white text"></p>
-    </div>
-
-    <div class="row pt-2">
-        <p class=" text-white text d-flex justify-content-end">More Times</p>
-    </div>
-
-    <div class="d-lg-flex my-3 justify-content-between">
-
-        <div class="col-lg-6 col-sm-12 border border-2 p-4 rounded">
-            <p class="txt">Date</p>
-
-            <div class="d-flex justify-content-center">
-                <button id="prev-month-btn" class="previous text-center bg-transparent border-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
-                        <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
-                    </svg>
-                </button>
-                <h5 id="month-year" class="text-center p-0 pt-2"></h5>
-                <button id="next-month-btn" class="previous text-center bg-transparent border-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-                        <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-                    </svg>
-                </button>
-            </div>
-            <div class="table-responsive pt-3">
-                <table class="table table-borderless text-light">
-                    <tbody id="calendar" class="text-center"></tbody>
-                </table>
-            </div>
-            <div class="text-center">
-            </div>
-        </div>
-        <br>
-        <div class="rounded col-lg-5 col-sm-12 border border-2 ms-lg-4 p-4">
-            <p class="txt">Time</p>
-            <div class="d-flex flex-wrap justify-content-around pt-3 " id="partial">
-                @await Html.PartialAsync("_Appointments", Model.CustomerAppointments)
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row">
-        <h1 class="fs-2">Personal Information</h1>
-    </div>
-
-    @await Html.PartialAsync("Book",Model.People)
-
-</div>*@
 <div class="container" id="booking">
    
     <div class="d-md-flex justify-content-between ">
@@ -105,87 +39,14 @@
 
         </div>
         <br>
-        <!-- <div class="rounded col-lg-5 col-sm-12 border border-2 ms-lg-4 p-4">
-            <p class="txt">Time</p>
-            <div class="d-flex flex-wrap justify-content-around pt-3 ">
-                    <button class="border my-2  border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-
-                        10:00 AM
-                    </button>
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-
-                        10:00 AM
-                    </button>
-
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-
-                        10:00 AM
-                    </button>
-
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-
-                        10:00 AM
-                    </button>
-
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-
-                        10:00 AM
-                    </button>
-
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-                        10:00 AM
-                    </button>
-
-                    </button>
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-                        10:00 AM
-                    </button>
-
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-                    10:00 AM
-                    </button>
-
-                    <button class="border my-2 border-1 rounded mx-3 time  text-white px-4" onclick="select(event)">
-
-
-                        10:00 AM
-                    </button>
-
-            </div>
-
-        </div> -->
+      
     </div>
     <input type="hidden" id="selectedAppointmentId" name="AppointmentId" />
     <div class="row">
         <h1 class="fs-2">Personal Information</h1>
     </div>
     @await Html.PartialAsync("Book", Model.People)
-    <!--<form class="py-4 ">
-        <div class="form-group">
-            <input type="text" class="form-control form-control-lg border border-2" id="Name"
-                   placeholder="Your Name" style="background-color: black;">
-        </div>
-        <div class="row pt-3">
-            <div class="col-md-6 mt-sm-3">
-                <input type="text" class="form-control form-control-lg border border-2"
-                       placeholder="Your PhoneNumber" style="background-color: black;">
-            </div>
-            <br>
-            <div class="col-md-6 pt-2">
-                <input type="text" class="form-control border border-2 form-control-lg mt-sm-2"
-                       placeholder="Your E-mail" style="background-color: black; color: #fff;">
-            </div>
-        </div>
-        <div class="form-group pt-3">
-            <textarea class="form-control border border-2" id="exampleFormControlTextarea1"
-                      placeholder="Your Message" rows="6" style="background-color: black;"></textarea>
-        </div>
-        <div class="text-center pt-3">
-            <button style="border: #fff 2px solid;" type="button" class="btn px-5">
-                <h4 class="text-capitalize px-5">Book</h4>
-            </button>
-        </div>
-    </form>-->
+   
 
 </div>
 @section Scripts {
