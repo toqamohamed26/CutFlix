@@ -155,7 +155,7 @@
 
         </div> -->
     </div>
-    <input type="text" id="selectedAppointmentId" name="AppointmentId" />
+    <input type="hidden" id="selectedAppointmentId" name="AppointmentId" />
     <div class="row">
         <h1 class="fs-2">Personal Information</h1>
     </div>
@@ -398,6 +398,7 @@
         function resetCalendar() {
             calendar.innerHTML = "";
         }
+
 
         generateCalendar(currentMonth, currentYear);
     </script>
