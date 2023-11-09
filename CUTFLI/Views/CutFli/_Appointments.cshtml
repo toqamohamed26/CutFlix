@@ -77,3 +77,16 @@
     @(new DateTime(item.StartTime.Ticks).ToString("hh:mm tt"))
     </button>
 }*@
+<script>
+    function getAppointmentsByDate(date) {
+        $.ajax({
+            url: '/CutFli/GetAppointmentsByDate',
+            type: 'GET',
+            data: { date: date },
+            success: function (result) {
+                $('#PartialViewContainer').html(result);
+            },
+        });
+    }
+
+</script>
