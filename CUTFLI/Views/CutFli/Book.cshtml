@@ -1,35 +1,55 @@
 ﻿@model CUTFLI.ViewModels.PeopleViewModel
 
-<form method="POST" asp-controller="CutFli" asp-action="Book" class="py-4 ">
-    <input type="hidden" asp-for="AppointmentId" id="AppointmentId" name="AppointmentId" />
-    <div class="form-group">
-        <input asp-for="FullName" type="text" class="form-control form-control-lg border border-2" id="Name"
-               placeholder="Your Name" style="background-color: black;">
-    </div>
-    <div class="row pt-3">
-        <div class="col-md-6 mt-sm-3">
-            <input asp-for="PhoneNumber" type="text" class="form-control form-control-lg border border-2"
-                   placeholder="Your PhoneNumber" style="background-color: black;">
+<div id="bookingFormContainer">
+    <form method="POST" asp-controller="CutFli" asp-action="Book" class="py-4 " id="bookingForm">
+        <input type="hidden" asp-for="AppointmentId" id="AppointmentId" name="AppointmentId" />
+        <div class="form-group">
+            <input asp-for="FullName" type="text" class="form-control form-control-lg border border-2" id="Name"
+                   placeholder="Your Name" style="background-color: black;">
         </div>
-        <br>
-        <div class="col-md-6 pt-2">
-            <input asp-for="Email" type="email" class="form-control border border-2 form-control-lg mt-sm-2"
-                   placeholder="Your E-mail" style="background-color: black; color: #fff;">
+        <div class="row pt-3">
+            <div class="col-md-6 mt-sm-3">
+                <input asp-for="PhoneNumber" type="text" class="form-control form-control-lg border border-2"
+                       placeholder="Your PhoneNumber" style="background-color: black;">
+            </div>
+            <br>
+            <div class="col-md-6 pt-2">
+                <input asp-for="Email" type="email" class="form-control border border-2 form-control-lg mt-sm-2"
+                       placeholder="Your E-mail" style="background-color: black; color: #fff;">
+            </div>
         </div>
-    </div>
-    <div class="form-group pt-3">
-        <textarea asp-for="Message" class="form-control border border-2" id="exampleFormControlTextarea1"
-                  placeholder="Your Message" rows="6" style="background-color: black;"></textarea>
-    </div>
-    <div class="text-center pt-3">
-        <button style="border: #fff 2px solid;" type="submit" class="btn px-5">
-            <h4 class="text-capitalize px-5">Book</h4>
-        </button>
-    </div>
-</form>
+        <div class="form-group pt-3">
+            <textarea asp-for="Message" class="form-control border border-2" id="exampleFormControlTextarea1"
+                      placeholder="Your Message" rows="6" style="background-color: black;"></textarea>
+        </div>
+        <div class="text-center pt-3">
+            <button style="border: #fff 2px solid;" type="submit" class="btn px-5">
+                <h4 class="text-capitalize px-5">Book</h4>
+            </button>
+        </div>
+    </form>
+</div>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     }
+    <script>
+    $('#bookingForm').submit(function (e) {
+        e.preventDefault();
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'), 
+            data: formData, // Form data
+            success: function (result) {
+                $('#bookingFormContainer').html(result)
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText); 
+        });
+    });
+    </script>
