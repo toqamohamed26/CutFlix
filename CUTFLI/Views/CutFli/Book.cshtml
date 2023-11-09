@@ -1,7 +1,7 @@
 ﻿@model CUTFLI.ViewModels.PeopleViewModel
 
 <form method="POST" asp-controller="CutFli" asp-action="Book" class="py-4 ">
-    <input type="text" asp-for="AppointmentId" id="AppointmentId" name="AppointmentId" />
+    <input type="hidden" asp-for="AppointmentId" id="AppointmentId" name="AppointmentId" />
     <div class="form-group">
         <input asp-for="FullName" type="text" class="form-control form-control-lg border border-2" id="Name"
                placeholder="Your Name" style="background-color: black;">
