@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
 using NToastNotify;
+using System.Collections.Generic;
 using System.Globalization;
 using static CUTFLI.Enums.SystemEnums;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
@@ -131,6 +132,21 @@ namespace CUTFLI.Controllers
                     }).ToList()
                 }).ToListAsync();
 
+                if (!appointments.Any())
+                {
+                    appointments = new List<DateAppointments>();
+                    for (DateTime dateLoop = startDate; dateLoop <= endDate; dateLoop = dateLoop.AddDays(1))
+                    {
+                        appointments.Add(new DateAppointments
+                        {
+                            StartDate = startDate,
+                            DayName = dateLoop.ToString("dddd", CultureInfo.InvariantCulture),
+                            DayNumber = dateLoop.ToString("MMMM d") + GetDaySuffix(dateLoop.Day),
+                            Appointments = new List<StartTimeViewModel>(),
+                        });
+                    }
+                }
+
                 var response = new BookAppointments(){};
                 response.CustomerAppointments = new AppointmentsWithDate
                 {
@@ -184,6 +200,21 @@ namespace CUTFLI.Controllers
                         StartTime = x.StartTime
                     }).ToList()
                 }).ToListAsync();
+
+                if (!appointments.Any())
+                {
+                    appointments = new List<DateAppointments>();
+                    for (DateTime dateLoop = startDate; dateLoop <= endDate; dateLoop = dateLoop.AddDays(1))
+                    {
+                        appointments.Add(new DateAppointments
+                        {
+                            StartDate = startDate,
+                            DayName = dateLoop.ToString("dddd", CultureInfo.InvariantCulture),
+                            DayNumber = dateLoop.ToString("MMMM d") + GetDaySuffix(dateLoop.Day),
+                            Appointments = new List<StartTimeViewModel>(),
+                        });
+                    }
+                }
 
                 var result = new AppointmentsWithDate();
                 result.StartDate = startDate;

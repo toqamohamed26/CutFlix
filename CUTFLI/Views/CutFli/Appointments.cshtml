@@ -182,9 +182,9 @@
 
 
         function selectDay(selected) {
-            var date = new Date(selected.year, selected.monthIndex, selected.day + 1);
-            var dateRequest = date.toISOString();
-
+            //var date = new Date(selected.year, selected.monthIndex, selected.day + 1);
+            //var dateRequest = date.toISOString();
+       
             var xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
@@ -199,7 +199,7 @@
                 }
             };
 
-            xhr.open("GET", `/CutFli/GetAppointmentsByDate?date=${dateRequest}`, true);
+            xhr.open("GET", `/CutFli/GetAppointmentsByDate?date=${selected}`, true);
             xhr.send();
 
             var selectedSpan = document.querySelector(".selected-day");
