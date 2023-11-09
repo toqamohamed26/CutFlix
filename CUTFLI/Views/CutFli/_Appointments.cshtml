@@ -15,16 +15,16 @@
             </svg>
         </div>
     </div>
-    <div class="d-flex border border-2 rounded p-2">
+    <div class="d-flex border border-2 rounded p-2 pt-3 overflow-scroll ">
 
     @foreach (var item in Model.Appointments)
     {
 
-        <div class=" d-flex flex-column col-md-2 col-4" >
-            <h6 class="px-4 day text-center">
+        <div class=" d-flex flex-column col-md-2 col-4 text-nowrap" >
+                <h6 class="px-4 day text-center text-nowrap">
                 @item.DayName
             </h6>
-                <p class="text-center DayNumber">@item.DayNumber</p>
+                <p class="text-center DayNumber text-nowrap">@item.DayNumber</p>
           
             @foreach (var appointment in item.Appointments)
             {
