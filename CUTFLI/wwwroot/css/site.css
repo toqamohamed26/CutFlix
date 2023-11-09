@@ -66,7 +66,9 @@ iframe {
     background-color: #E50914;
    
 }
-
+texterea,input{
+    color : white !important ;
+}
 @media screen and (min-width: 1215px) and (max-width: 1400px) {
     .call {
         width: 500px !important;
@@ -75,6 +77,9 @@ iframe {
 
 
 @media screen and (max-width: 1024px) {
+    .scrolll {
+        overflow:scroll!important ;
+    }
     .day{
         font-size:.75rem !important;
         width:100% !important;
