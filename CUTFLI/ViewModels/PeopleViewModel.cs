@@ -14,6 +14,7 @@ namespace CUTFLI.ViewModels
         [Required]
         public string PhoneNumber { get; set; }
         public string Message { get; set; }
-        public int AppointmentId { get; set; }
+        [Required]
+        public int? AppointmentId { get; set; }
     }
 }

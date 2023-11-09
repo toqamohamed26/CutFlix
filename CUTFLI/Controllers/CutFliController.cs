@@ -50,7 +50,7 @@ namespace CUTFLI.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex,"CutFliController-GetVideo exception :");
+                _logger.LogError(ex, "CutFliController-GetVideo exception :");
                 return NotFound();
             }
         }
@@ -147,7 +147,7 @@ namespace CUTFLI.Controllers
                     }
                 }
 
-                var response = new BookAppointments(){};
+                var response = new BookAppointments() { };
                 response.CustomerAppointments = new AppointmentsWithDate
                 {
                     StartDate = startDate,
@@ -339,7 +339,7 @@ namespace CUTFLI.Controllers
                         await _dbContext.AddAsync(newCustomer);
                         await _dbContext.SaveChangesAsync();
                         id = newCustomer.Id;
-                          email = newCustomer.Email;
+                        email = newCustomer.Email;
                     }
                     else
                     {
@@ -375,7 +375,8 @@ namespace CUTFLI.Controllers
                     }
                     return RedirectToAction(nameof(Index));
                 }
-                return PartialView("Book", peopleModel);
+                _toastNotification.AddErrorToastMessage("Please fill all data");
+                return RedirectToAction(nameof(Appointments));
             }
             catch (Exception ex)
             {
